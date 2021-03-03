@@ -26,6 +26,6 @@ class ApiGenerator {
         }
 
     companion object {
-        const val HOST = "http://10.0.2.2:8000" // build variants 등을 이용해서 개발환경, 운영환경의 빌드 설정에 따라 자동으로 주소를 선택하게 만들어주는 편이 운영환경에 개발서버 주소를 입력하는 실수 등을 방지 가능
+        const val HOST = "http://192.168.0.21:8080" // build variants 등을 이용해서 개발환경, 운영환경의 빌드 설정에 따라 자동으로 주소를 선택하게 만들어주는 편이 운영환경에 개발서버 주소를 입력하는 실수 등을 방지 가능
     }
 }
