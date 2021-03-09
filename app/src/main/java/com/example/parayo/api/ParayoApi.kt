@@ -1,7 +1,9 @@
 package com.example.parayo.api
 
+import com.example.parayo.api.request.SigninRequest
 import com.example.parayo.api.request.SignupRequest
 import com.example.parayo.api.response.ApiResponse
+import com.example.parayo.api.response.SigninResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -22,4 +24,8 @@ interface ParayoApi {
     @POST("/api/v1/users") // HTTP의 POST 메서드 호출함
     suspend fun signup(@Body signupRequest: SignupRequest) // @Body 애노테이션은 파라미터의 값을 HTTP의 요청 본문에 쓰도록 지시시
        : ApiResponse<Void>
+
+    @POST("/api/v1/signin")
+    suspend fun signin(@Body signinRequest: SigninRequest)
+    : ApiResponse<SigninResponse>
 }
