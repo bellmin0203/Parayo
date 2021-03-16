@@ -3,7 +3,6 @@ package com.example.parayo.signup
 import android.graphics.Typeface
 import android.text.InputType
 import android.view.Gravity
-import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.parayo.R
