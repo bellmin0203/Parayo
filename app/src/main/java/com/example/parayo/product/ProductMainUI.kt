@@ -13,7 +13,9 @@ import com.example.parayo.view.borderBottom
 import com.google.android.material.navigation.NavigationView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
+import org.jetbrains.anko.design.floatingActionButton
 import org.jetbrains.anko.design.navigationView
+import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.drawerLayout
 
 class ProductMainUI(
@@ -29,16 +31,28 @@ class ProductMainUI(
         ui.drawerLayout {
             drawerLayout = this
 
-            verticalLayout {
-                toolbar = toolbar {
-                    title = "Parayo"
-                    bottomPadding = dip(1) // 우측 메뉴 아이콘 영역이 툴바 전체 높이를 덮어버려 하단 배경이 잘리는 현상때문에
-                    background = borderBottom(width = dip(1)) // 아래쪽 선이 들어간 배경을 지정
-                    menu.add("Search")
-                        .setIcon(R.drawable.ic_search)
-                        .setShowAsAction(SHOW_AS_ACTION_ALWAYS)
-                }.lparams(matchParent, wrapContent)
-            }.lparams(matchParent, matchParent)
+            frameLayout {
+                verticalLayout {
+                    toolbar = toolbar {
+                        title = "Parayo"
+                        bottomPadding = dip(1) // 우측 메뉴 아이콘 영역이 툴바 전체 높이를 덮어버려 하단 배경이 잘리는 현상때문에
+                        background = borderBottom(width = dip(1)) // 아래쪽 선이 들어간 배경을 지정
+                        menu.add("Search")
+                            .setIcon(R.drawable.ic_search)
+                            .setShowAsAction(SHOW_AS_ACTION_ALWAYS)
+                    }.lparams(matchParent, wrapContent)
+                }.lparams(matchParent, matchParent)
+
+                floatingActionButton {
+                    imageResource = R.drawable.ic_add
+                    onClick { viewModel.openRegistrationActivity() }
+                }.lparams {
+                    bottomMargin = dip(20)
+                    marginEnd = dip(20)
+                    gravity = Gravity.END or Gravity.BOTTOM
+                }
+            }
+
 
             // navigationView() 함수를 이용해 네비게이션 드로어를 생성
             navigationView = navigationView {
